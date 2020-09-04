@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
 
-<body>
+<body style="background-image: url('https://www.jeopardy.com/sites/default/files/social_meta/clue_board.jpg');">
 
     <nav class="navbar navbar-light bg-light">
         <a href="highscore.html"class="navbar-brand">View Highscores!</a>
@@ -15,13 +15,53 @@
         <div class="alert alert-success d-flex justify-content-end" role="alert">
             
         </div>
-      </nav>
+    </nav>
+
+    <section class="container">
+
+        <div class="row">
+            <div class="col-8">
+            <h1 style="margin-top:100px;margin-bottom:20px;color:antiquewhite;font-weight:bolder;font-size:64px">
+                Javascript Jeopardy!
+            </h1>
+            </div>
+            <div class="col-2">
+            <button type="button" class="btn btn-success btn-lg" style="margin-top:100px">Large button</button>
+            </div>
+        </div>
+    
+        <div class="row">
+          <div class="col-8">
+            <div id="Question-card"class="card"style="display">
+    
+              <h1 id="Question-number" class="card-header">
+                Question 1.
+              </h1>
+    
+              <article class="card-body">
+    
+                <h2 id="Question-text">
+
+                </h2>
+    
+                <ul id="Question-answers">
+
+                </ul>
+
+              </article>
+    
+            </div>
+          </div>
+        </div>
+    
+      </section>
     
     
 
 </body>
 
 <footer>
+    <script src="Mitchellcq-assignment-wk-4\scriptMain.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
