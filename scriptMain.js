@@ -1,75 +1,114 @@
-var Qcard = document.getElementById("Question-card");
-var Qtext = document.getElementById("Question-text");
-var Qanswers = document.getElementById("Question-answers");
-var Qindex = document.getElementById("Question-index");
-var Qcount = 5;
+//global variables
+var questionIndex = 0;
 
-//question objects
+var time = questions.length * 30;
 
-var questionOne = {question:"",
-                    answers:"","","","",
-                };
+var qText = document.getElementById("Question-text");
 
-var questionTwo = {question:"",
-                    answers:"","","","",
-                };
+var qAnswers = document.getElementById("Question-answers");
 
-var questionThree = {question:"",
-                    answers:"","","","",
-                };
+var timerEl = document.getElementById("timer-element");
 
-var questionFour = {question:"",
-                    answers:"","","","",
-                };
+var start = document.getElementById("startButton");
 
-var questionFive = {question:"",
-                    answers:"","","","",
-                };
+var qNumber = document.getElementById("Question-number");
 
-var questionSix = {question:"",
-                    answers:"","","","",
-                };
-
-
-init();
-
-function init() {
-   Qcard.style.display = "none";
-}
-
-function ask() {
-    for (i=0; i < Qcount; i++) {
-    Qindex.value = [i];
+//questions and answers object
+var questions = {
+    q1:"Do you like javascript?", 
+    //(a1[0])
     
-    if (i=0){
-        Qtext.textContent = questionOne.question;
-        Qanswers.textContent = questionOne.answers;
-    } else if (i=1){
-        Qtext.textContent = questionOne.question;
-        Qanswers.textContent = questionOne.answers;
-    } else if (i=2){
-        Qtext.textContent = questionOne.question;
-        Qanswers.textContent = questionOne.answers;
-    } else if (i=3){
-        Qtext.textContent = questionOne.question;
-        Qanswers.textContent = questionOne.answers;
-    } else if (i=4){
-        Qtext.textContent = questionOne.question;
-        Qanswers.textContent = questionOne.answers;
-    } else (i=5){
-        Qtext.textContent = questionOne.question;
-        Qanswers.textContent = questionOne.answers;
-    }
+    q2:"Inside which HTML element do we put the JavaScript?", 
+    
+    //(a2[1])
+    
+    q3:"How do you write 'Hello World' in an alert box?",
+    
+    //(a3[2])
+    
+    q4:"How can you add a comment in a JavaScript?", 
+    
+    //(a4[0])
+    
+    q5:"What does the .pop() method do?", 
+    //(a5[2]) 
+}
 
+var answers = {
+        a1:["Yes","No","Indifferent","What's javascript? "],
+    
+        a2:["<scripting>","<script>","??????????","<javascript>"],
+    
+        a3:["alertBox('Hello World')","msgBox('Hello World')","alert('Hello World')","What is going on"],
+    
+        a4:["//This is a comment","'This is a comment'","<!--This is a comment-->","These are all comments please help me"],
+    
+        a5:["Remove the last element of an array","Return the value of the last element of an array","Both A & B are correct","...goes the weasel?"]
+}
+    
+
+//functions
+function startQuiz () {
+    start.style.display = "none";
+    document.getElementById("Question-card").style.display = "block";
+
+    setInterval(clock, 1000);
+
+    timerEl.style.display = "block";
+    timerEl.textContent = time;
 
 }
 
-function showQuestions(event) {
-    var x = document.getElementById("Question-card");
-    if (x.style.display === "none") {
-      x.style.display = "block";
-      ask();
+function getQuestion () {
+
+    qText.innerHTML = "";
+    qAnswers.innerHTML = "";
+
+    questionIndex++;
+
+    if (questionIndex > questions.length) {
+        endQuiz();
+    }
+
+    qNumber.textContent = questionIndex;
+
+    for (i=0; i<questions.length; i++){
+        qText.textContent = questions.q[i]
+
+        for(j=0; j<answers.length; j++){
+            var answerLi = document.createElement('li')
+            answerLi.textContent = answers[i].[j];
+
+            qAnswers.appendChild(answerLi);
+
+            var button = document.createElement('button');
+
+            answerLi.appendChild(button);
+
+        }
     }
 }
 
-addEventListener
+function factCheck () {
+  if (event.target == "button") {
+    if (userChoice != correctAnswer){
+        time - 30;
+        if (time < 0){ time = 0}
+        alert("wrong!");
+        getQuestion();
+    } else {
+        alert("Correct!");
+        getQuestion();
+    }
+  }
+}
+
+function endQuiz () {
+    document.getElementById("Question-card").style.display = "none";
+    
+}
+
+//event listeners
+start.addEventListener("click", startQuiz);
+
+qAnswers.addEventListener("click", factCheck);
