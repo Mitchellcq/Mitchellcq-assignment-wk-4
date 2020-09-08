@@ -49,7 +49,7 @@ var answers = {
 
 //functions
 function startQuiz () {
-    start.style.display = "none";
+    document.getElementById("buttonHide").style.display = "none";
     document.getElementById("Question-card").style.display = "block";
 
     setInterval(clock, 1000);
@@ -63,6 +63,7 @@ function getQuestion () {
 
     qText.innerHTML = "";
     qAnswers.innerHTML = "";
+    qNumber.innerHTML = "";
 
     questionIndex++;
 
@@ -75,7 +76,7 @@ function getQuestion () {
     for (i=0; i<questions.length; i++){
         qText.textContent = questions.q[i]
 
-        for(j=0; j<answers.length; j++){
+        for(j=0; j<answers[i].length; j++){
             var answerLi = document.createElement('li')
             answerLi.textContent = answers[i].[j];
 
@@ -91,6 +92,8 @@ function getQuestion () {
 
 function factCheck () {
   if (event.target == "button") {
+   var userChoice = target.parentElement;
+
     if (userChoice != correctAnswer){
         time - 30;
         if (time < 0){ time = 0}
@@ -104,7 +107,20 @@ function factCheck () {
 }
 
 function endQuiz () {
+
+    clearInterval();
+
     document.getElementById("Question-card").style.display = "none";
+    document.getElementById("endScreen").style.display = "block";
+
+    var userInput = document.createElement("form");
+    document.getElementById("enterDetails").appendChild(userInput);
+
+    var initials = document.createElement("input");
+    userInput.appendChild(initials);
+
+    var finalScore = time;
+    userInput.appendChild(finalScore);
     
 }
 

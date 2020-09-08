@@ -29,17 +29,18 @@
     
         <div class="row">
 
-          <div class="col">
-              <button id="startButton" type="button" class="btn btn-success btn-lg" style="display:block">
+          <div class="col"id="buttonHide"style="display:block">
+              <button id="startButton" type="button" class="btn btn-success btn-lg"style="width:200px; height:100px; font-size:32px">
                   Start!
               </button>
           </div>
 
-          <div class="col-8">
-            <div id="Question-card"class="card"style="display:none">
+          <div class="col"id="Question-card"style="display:none">
+
+            <div class="card">
     
               <h1 class="card-header">
-                Question <span id="Question-index">0</span>
+                Question <span id="Question-index"></span>
               </h1>
     
               <article class="card-body">
@@ -49,7 +50,7 @@
                 </h2>
 
                 <form>
-                  <ul id="Question-answers">
+                  <ul id="Question-answers"class="list-group list-group-flush">
 
                   </ul>
                 </form>
@@ -57,7 +58,16 @@
               </article>
     
             </div>
+
           </div>
+
+          <div class="col"id="endScreen">
+            <div id="enterDetails">
+
+            </div>
+              
+          </div>
+
         </div>
     
       </section>
