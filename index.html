@@ -14,6 +14,9 @@
     #title {
       text-align: center;
     }
+    #link {
+      text-align: center;
+    }
     #timer {
       float: right;
       font-weight: bolder;
@@ -32,7 +35,7 @@
 
   <h1 id="title">Javascript Jeopardy!</h1>
 
-
+  <a id="link" href="highscore.html">View Highscores!</a>
 
   <div id="display">
 
@@ -58,8 +61,13 @@
     </div>
 
     <div id="end">
-      <input type="text">
-      
+
+      <input id="username"type="text">
+
+      <p id="finalScore">
+
+      </p>
+
     </div>
 
   </div>
@@ -135,6 +143,7 @@ var answers = {
           var minutes = parseInt(timer[0], 10);
           var seconds = parseInt(timer[1], 10);
           --seconds;
+          --score;
 
           minutes = (seconds < 0) ? --minutes : minutes;
           seconds = (seconds < 0) ? 59 : seconds;
@@ -153,11 +162,12 @@ var answers = {
 
       $("#question-text").text = (questions[questionIndex]);
 
-     for (i=0,i<answers[i].length, i++)
+     for (var i = 0; i < answers[i].length; i++)
 
       var ans = $(function() {
-        $("question-answers").append(answers[i])
-
+        var li = $('<li></li>');
+        $('li').innerhtml = answers[i];
+        $("question-answers").append(li);
       });
 
       var r= $('<input type="button" value="new button" id="submit"/>');
@@ -188,8 +198,12 @@ var answers = {
     function endQuiz(){
       clearInterval(interval);
       $("#questions").hide;
-      $("timer").hide
+      $("timer").hide;
       $("#end").show;
+
+
+
+      $("#finalScore").text("You're score is " + score)
 
     }
 
