@@ -15,33 +15,33 @@ var qNumber = document.getElementById("Question-number");
 
 //questions and answers object
 var questions = {
-    q1:"Do you like javascript?", 
+    q1:"This programming language is the interactive part of building websites.", 
     //(a1[0])
     
-    q2:"Inside which HTML element do we put the JavaScript?", 
+    q2:"We put Javascript inside this HTML element.", 
     
     //(a2[1])
     
-    q3:"How do you write 'Hello World' in an alert box?",
+    q3:"It is in this way that we could make you aware of a message.",
     
     //(a3[2])
     
-    q4:"How can you add a comment in a JavaScript?", 
+    q4:"Are you a fan of Jeopardy?", 
     
     //(a4[0])
     
-    q5:"What does the .pop() method do?", 
+    q5:"Ok fine... What does the .pop() method do?", 
     //(a5[2]) 
 }
 
 var answers = {
-        a1:["Yes","No","Indifferent","What's javascript? "],
+        a1:["What is Javascript?","What is CSS?","What is HTML?","What is going on?"],
     
-        a2:["<scripting>","<script>","??????????","<javascript>"],
+        a2:["What is <scripting>?","What is <script>?","What what??????????","What is <javascript>?"],
     
-        a3:["alertBox('Hello World')","msgBox('Hello World')","alert('Hello World')","What is going on"],
+        a3:["What is alertBox()?","What is msgBox()?","What is alert()?","What the frick...?"],
     
-        a4:["//This is a comment","'This is a comment'","<!--This is a comment-->","These are all comments please help me"],
+        a4:["How dare you change the format!","I'm asking the questions here!","I prefer a regular questionnaire tbh.","Please help me"],
     
         a5:["Remove the last element of an array","Return the value of the last element of an array","Both A & B are correct","...goes the weasel?"]
 }
