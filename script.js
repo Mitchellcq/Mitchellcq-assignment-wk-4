@@ -1,14 +1,57 @@
 var secondsLeft = 100;
 var timeEl = document.getElementById("timer");
 
-function start(){
-    document.getElementById("startDiv").style.display = "none";
-    document.getElementById("quiz").style.display = "block";
+var start = document.getElementById("start");
+var question = document.getElementById("question");
+var btn0 = document.getElementById("btn0");
+var btn1 = document.getElementById("btn1");
+var btn2 = document.getElementById("btn2");
+var btn3 = document.getElementById("btn3");
+var progress = document.getElementById("progress");
 
+start.style.display = "block";
+question.style.visibility = "hidden";
+progress.style.visibility = "hidden";
+btn0.style.visibility = "hidden";
+btn1.style.visibility = "hidden";
+btn2.style.visibility = "hidden";
+btn3.style.visibility = "hidden";
+
+start.onclick = function() {letsGo()};
+
+function letsGo (){
     setTime();
-
-    Quiz();
+    start.style.display = "none";
+    question.style.visibility = "visible";
+    progress.style.visibility = "visible";
+    btn0.style.visibility = "visible";
+    btn1.style.visibility = "visible";
+    btn2.style.visibility = "visible";
+    btn3.style.visibility = "visible";
 }
+
+
+//timer
+function setTime() {
+    var timerInterval = setInterval(function() {
+      secondsLeft--;
+      timeEl.textContent = secondsLeft;
+  
+      if(secondsLeft === 0) {
+        clearInterval(timerInterval);
+        showScores();
+      }
+  
+    }, 1000);
+  }
+
+document.getElementById("start").onclick = function startgame() {
+    setTime();
+    this.style.display = "none";
+    document.querySelector("buttons").style.display = "block";
+    document.querySelector("question").style.display = "block";
+    document.querySelector("progress").style.display = "block";
+};
 
 function Quiz(questions) {
     this.score = 0;
@@ -23,7 +66,9 @@ Quiz.prototype.getQuestionIndex = function() {
 Quiz.prototype.guess = function(answer) {
     if(this.getQuestionIndex().isCorrectAnswer(answer)) {
         this.score++;
-    }
+    } else {this.score--;
+            secondsLeft - 20;
+        }
  
     this.questionIndex++;
 };
@@ -73,6 +118,13 @@ function guess(id, guess) {
     };
 }
  
+function showScores() {
+    var gameOverHTML = "<h1>Result</h1>";
+    gameOverHTML += "<h2 id='score'> Your scores: " + quiz.score + "with " + secondsLeft + "seconds to spare! </h2>";
+    var element = document.getElementById("quiz");
+    element.innerHTML = gameOverHTML;
+    clearInterval(timerInterval);
+}
  
 function showProgress() {
     var currentQuestionNumber = quiz.questionIndex + 1;
@@ -96,25 +148,3 @@ var quiz = new Quiz(questions);
 populate();
 
 
-document.getElementById("myBtn").addEventListener("click", start());
-
-//timer
-function setTime() {
-    var timerInterval = setInterval(function() {
-      secondsLeft--;
-      timeEl.textContent = secondsLeft;
-  
-      if(secondsLeft === 0) {
-        clearInterval(timerInterval);
-        showScores();
-      }
-  
-    }, 1000);
-  }
-
-function showScores() {
-    var gameOverHTML = "<h1>Result</h1>";
-    gameOverHTML += "<h2 id='score'> Your scores: " + quiz.score + "</h2>";
-    var element = document.getElementById("quiz");
-    element.innerHTML = gameOverHTML;
-}
